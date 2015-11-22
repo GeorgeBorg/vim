@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  when: 2015-11-22 18:03:45
+  what: MyString
+  where: MyString
+  description: MyString
+  private: false
+
+two:
+  user_id: 1
+  when: 2015-11-22 18:03:45
+  what: MyString
+  where: MyString
+  description: MyString
+  private: false
