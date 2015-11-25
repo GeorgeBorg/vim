@@ -1,41 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Vim</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<%= render 'layouts/header' %>
+<body class="group l-application">
 
-<div class="nav-bar">
-	
-	<div class="logo">
-		<h1> Vim </h1>
+	<%= render 'top_bar' %>
+  
+  	<%= render 'hero_cover' %>
+
+	<div class="main-content">
+		<%= yield %>
 	</div>
-	
-	<div class="login-section">
-		<% if user_signed_in? %>
-		    <div class="current-user" >
-		       <%= gravatar_image_tag(current_user.email.gsub('spam', 'mdeering'), :alt => current_user.username) %>
-		    </div>
-		    <div class="user-popup">
-	            <ul>
-                	<div class="popup-text">
-                   		<li><p>Signed in as</p></li>
-	                    <li><p class="popup-username"><%= current_user.username %></p></li>
-	                </div>
-	                <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-	            </ul>
-		    </div>
-		<%else%>
-			<%= link_to "LOG IN / SIGN UP" , new_user_session_path,  class: 'user-login' %>
-		<% end %>
-	</div>
-
-</div>
-
-<%= yield %>
 
 </body>
+
 </html>

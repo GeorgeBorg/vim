@@ -4,7 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.where('time > ?', Time.now) # Filter for future events only
+    @event_days = @events.group_by{ |item| item.time.to_date } # Group by days
   end
 
   # GET /events/1
@@ -25,6 +26,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.creator_id = current_user.id
 
     respond_to do |format|
       if @event.save
@@ -69,6 +71,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:user_id, :when, :what, :where, :description, :private)
+      params.require(:event).permit(:user_id, :time, :what, :where, :description, :private)
     end
 end
