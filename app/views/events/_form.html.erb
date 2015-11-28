@@ -20,13 +20,29 @@
     <%= f.text_field :what %>
   </div>
   <div class="field">
-    <%= f.label :where %><br>
-    <%= f.text_field :where %>
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
   </div>
+
+  <div class="field" style="display:none">
+    <%= f.label :latitutde %><br>
+    <%= f.text_field :latitude, id: "centre_latitude", :value => 51.2 %>
+  </div>
+
+  <div class="field" style="display:none">
+    <%= f.label :longitutde %><br>
+    <%= f.text_field :longitude, id: "centre_longitude", :value => -0.1275 %>
+  </div>
+
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
+
   <div class="field">
     <%= f.label :private %><br>
     <%= f.check_box :private %>
@@ -34,4 +50,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
