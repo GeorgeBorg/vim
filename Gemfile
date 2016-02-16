@@ -18,7 +18,7 @@ gem 'gmaps4rails'
 
 gem 'geocoder'
 
-gem 'geokit-rails'
+gem 'geokit'
 
 gem 'underscore-rails'
 

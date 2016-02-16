@@ -1,0 +1,80 @@
+<header class="top-bar right">
+
+	<div class="top-section">
+		
+		<div class="logo">
+			<%= link_to(root_path) do %>
+				<h1> vim </h1>
+			<% end %>
+		</div>
+
+		<div class="new-vim">
+			<%= link_to new_event_path do %>
+	          	<p>create vim</p>
+	     	<% end %>
+		</div>
+		
+		<div class="preference-section">
+			<div class="preferences">
+				
+		          	<p>preferences</p>
+
+			</div>
+			
+			<div class="preference-popup">
+
+				<%= render 'preferences' %>
+
+            </div>
+
+		</div>
+
+		<div class="filter-section">
+			
+			<p>vim type</p>
+
+		</div>
+
+			
+		<div class="login-section right">
+
+			<% if user_signed_in? %>
+
+			           <div class="current-user" >
+
+			           	<%= gravatar_image_tag(current_user.email.gsub('spam', 'mdeering')) %>
+			           </div>
+
+			           <div class="user-popup">
+
+			                      <ul>
+			                     		<li><%= link_to 'profile', destroy_user_session_path, method: :delete %></li>
+			                     		<li><%= link_to 'requests', destroy_user_session_path, method: :delete %></li>
+			                     		<li><%= link_to 'logout', destroy_user_session_path, method: :delete %></li>
+			                      </ul>
+
+			            </div>
+			<%else%>
+			          <%= link_to "LOG IN / SIGN UP" , new_user_session_path,  class: 'user-login' %>
+			<% end %>
+
+		</div>
+
+
+		<div class="search-wrapper">
+
+			<i class="fa fa-search search-icon"></i>
+
+			<form action="<%= root_path %>" method="get" class="search-form" >
+
+				<%= text_field_tag :q, params[:s], placeholder: "SEARCH", class: "search-input", autocomplete:"off"%>
+				<%= submit_tag "Search", :style => "display: none;", :name  => nil %>
+
+			</form>
+
+		</div>
+	
+	</div>
+
+</header>
+

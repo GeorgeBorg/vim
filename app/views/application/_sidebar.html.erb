@@ -1,0 +1,30 @@
+<div class="sidebar left">
+	
+	<h2 class="logo">Vim</h2>
+
+	<%#= link_to 'lynkr', root_path, class: "logo" %>
+
+	<div class="main-nav">
+
+
+		<ul>
+			<%= link_to events_path do %>
+	          	<li class="sidebar-links title-link"><p>All Vims</p></li>
+	     	<% end %>
+
+	     	<%= link_to new_event_path do %>
+	          	<li class="sidebar-links"><p>Create Vim</p><i class="fa fa-plus-square-o new-link-button"></i></li>
+	     	<% end %>
+		</ul>
+
+	</div>
+
+	<div class="footer group">
+
+		<p class="left" >About</p>
+
+		<p class="right" >&copy; Vim 2015</p>	
+
+	</div>
+
+</div>

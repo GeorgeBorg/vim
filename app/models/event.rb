@@ -1,8 +1,6 @@
 class Event < ActiveRecord::Base
-	acts_as_mappable
-
 	geocoded_by :where, :latitude  => :lat, :longitude => :lng
-
+	
 	scope :preference_location, -> (location) { where location: location } #Location param from preferences
 	scope :future_events, -> { where 'time > ?', Time.now } #Future events only
 

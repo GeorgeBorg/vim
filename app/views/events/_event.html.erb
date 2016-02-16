@@ -1,0 +1,59 @@
+<% @event_days.sort.each do |day, events| %>
+
+	
+<!-- Display today, tomorrow, day or date -->
+	<div class="day-heading group">
+	  <% if day.today? %>
+		<h4>Today</h4>
+	  <% elsif day.to_date == Date.tomorrow %>
+		<h4>Tomorrow</h4> 
+	  <% elsif day < Date.today+6 %>
+		<h4><%= day.strftime('%A') %></h4> 
+	  <%else%>
+	  	<h4><%= day.strftime('%m/%d/%Y') %></h4>
+	  <%end%>
+	</div>
+
+	<% for event in events %>
+		<div id="main-container">
+		  	<%= link_to event_path(event) do %>
+
+			    <div class="event-container">
+
+			      <div class="vim-types">
+		
+			        <div class="vim-type">
+
+			        </div>
+			        
+			      </div>
+			      
+			      <div class="vim-what">
+			        <h2><%= event.what %></h2>
+			      </div>
+
+			      <div class="at">
+			        <h2> @ </h2>
+			      </div>
+
+			      <div class="vim-where">
+			        <h2><%= event.location %></h2>
+			      </div>
+
+			      <div class="vim-when">
+			        <h4><%= event.time.strftime("%I:%M%p") %> </h4>
+			      </div>
+
+			    </div>
+
+		  	<% end %>
+
+		</div>
+
+	<% end %>
+
+<% end %>
+
+
+
+

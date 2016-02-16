@@ -1,54 +1,53 @@
-<%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+  <%= form_for(@event) do |f| %>
+    <% if @event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :time %><br>
+      <%= f.datetime_select :time %>
     </div>
+    <div class="field">
+      <%= f.label :what %><br>
+      <%= f.text_field :what %>
+    </div>
+    <div class="field">
+      <%= f.label :location %><br>
+      <%= f.text_field :location %>
+    </div>
+
+    <input id="search" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+    <input type='button' id='link' value='Search'>
+
+    <div class="field" style="">
+      <%= f.label :lat %><br>
+      <%= f.text_field :lat, id: "centre_latitude"%>
+    </div>
+
+    <div class="field" style="">
+      <%= f.label :lng%><br>
+      <%= f.text_field :lng, id: "centre_longitude"%>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_field :description %>
+    </div>
+
+    <div class="field">
+      <%= f.label :private %><br>
+      <%= f.check_box :private %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
   <% end %>
-
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.datetime_select :time %>
-  </div>
-  <div class="field">
-    <%= f.label :what %><br>
-    <%= f.text_field :what %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-
-  <div class="field" style="display:none">
-    <%= f.label :latitutde %><br>
-    <%= f.text_field :latitude, id: "centre_latitude", :value => 51.2 %>
-  </div>
-
-  <div class="field" style="display:none">
-    <%= f.label :longitutde %><br>
-    <%= f.text_field :longitude, id: "centre_longitude", :value => -0.1275 %>
-  </div>
-
-  <div class="map-container">
-    <div id="map"></div>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :private %><br>
-    <%= f.check_box :private %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-<% end %>

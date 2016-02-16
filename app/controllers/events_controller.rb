@@ -4,19 +4,17 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-
     # @events = Event.within(distance, :origin => current_location)
     @events = Event.future_events # Filter for future events only
+
+    city = request.remote_ip
+    puts city
+    
     # @events = @events.preference_location(params[:location]) if params[:location].present?
-    @events = @events.near('London, England', 20)    # venues within 20 miles of Omaha
-
-
+    @events = @events.near("Jersey", 20)    # venues within .... miles of .......
     @event_days = @events.group_by{ |item| item.time.to_date } # Group by days
-
   end
-
-
-
+  
 
   # GET /events/1
   # GET /events/1.json
@@ -81,6 +79,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:user_id, :time, :what, :where, :lat, :lng, :description, :private)
+      params.require(:event).permit(:user_id, :time, :what, :location, :lat, :lng, :description, :private)
     end
 end

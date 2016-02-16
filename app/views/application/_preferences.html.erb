@@ -1,0 +1,20 @@
+<div class="preference-form">
+
+	<%= form_tag '', :method => :get, :name => 'preference-form' do %>
+
+		<div class="field">
+		    <%= label_tag :location %><br>
+	    	<%= text_field_tag 'location' %>
+		</div>
+
+	  <%= submit_tag 'Filter' %>
+
+	<% end %>
+
+	<div class="slider">
+		<h4> Distance </h4>
+		<div id="slider"></div>
+	</div>
+
+	
+</div>
